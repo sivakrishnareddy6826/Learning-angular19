@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { AdminComponent } from "../components/admin/admin.component";
 import { UserComponent } from "../components/user/user.component";
 import { DataBindingComponent } from "../components/dataBinding/dataBinding.component";
@@ -10,7 +10,7 @@ import { NgStyleComponent } from "../components/attributeDirectives/ngStyle/ngSt
 
 @Component({
   selector: 'app-root',
-  imports: [AdminComponent, UserComponent, DataBindingComponent, NgIfComponent, NgForComponent, NgClassComponent, NgStyleComponent],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

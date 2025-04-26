@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dataBinding',
@@ -18,9 +19,9 @@ export class DataBindingComponent {
   selectedCity: string =""
 
 
-  constructor(){
+  constructor(private route: Router){
     console.log("First Name"+this.firstName);
-    
+
   }
 
   showWelcomeMessage(){
@@ -29,6 +30,13 @@ export class DataBindingComponent {
 
   OnCityChange() {
     alert("City got changed! " + this.firstName)
-    }
+  }
+
+  // This is example for How to navigate by using Route service from .ts file,
+  // To achieve this you need to inject Route in constructor and use NavigateByUrl
+  navigateToAdmin(){
+    this.route.navigateByUrl("/admin");
+  }
+
 
 }

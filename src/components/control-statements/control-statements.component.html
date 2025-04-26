@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-3 text-center">
+    @if (divVisible == true) {
+      <div class="bg-success p-3" style="font-style: oblique; color: aliceblue;">
+        If control flow Example
+      </div>
+    }
+  </div>
+  <!-- If check box is checked I'm going to show primary else secondary -->
+  <div class="col-3">
+    @if (isChecked) {
+      <div class="bg-primary p-3" style="font-family: 'Times New Roman'; font-style: oblique; color: whitesmoke;">
+        Second Example check box checked.
+     </div>
+     <div>
+        <h3 style="font-family: Cambria; color: darkblue;">My Name is Siva Krishna Reddy</h3>
+     </div>
+    }
+    @else {
+      <div class="bg-secondary p-3" style="font-family: 'Times New Roman'; font-style: oblique; color: whitesmoke;">
+        Second Example check box un checked
+     </div>
+     <div>
+      <h3 style="font-family: Times; color: black;"> Kamireddy</h3>
+     </div>
+    }
+
+  </div>
+</div>
+
+<div class="row pt-2">
+  <div class="col-3 text-center"><br>
+    <button class="btn btn-danger" (click)="HideShowDiv1(false)">Hide</button>
+    <button class="btn btn-success mx-3" (click)="HideShowDiv1(true)">Show</button>
+  </div>
+  <div class="col-3">
+    <input type="checkbox" [(ngModel)]="isChecked">
+  </div>
+
+<div class="row pt-3">
+  <div class="col-3">
+    <select>
+      @for (item of cityList; track $index) {
+        <option>{{item}}</option>
+      }
+    </select>
+  </div>
+</div>
+<div class="row">
+  <div class="col-5">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Sl.No</th>
+          <th>Name</th>
+          <th>ID</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (emp of empList; track $index) {
+          <tr>
+            <td>{{$index +1}}</td>
+            <td>{{emp.empName}}</td>
+            <td>{{emp.empId}}</td>
+            <td>{{emp.phoneNum}}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
