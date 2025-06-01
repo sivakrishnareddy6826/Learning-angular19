@@ -1,3 +1,4 @@
+import { LinkedSignalComponent } from '../components/signals/linked-signal/linked-signal.component';
 import { Routes } from '@angular/router';
 import { AdminComponent } from '../components/admin/admin.component';
 import { UserComponent } from '../components/user/user.component';
@@ -5,6 +6,8 @@ import { DataBindingComponent } from '../components/dataBinding/dataBinding.comp
 import { NgClassComponent } from '../components/attributeDirectives/ngClass/ngClass.component';
 import { NgForComponent } from '../components/Directives/ngFor/ngFor.component';
 import { ControlStatementsComponent } from '../components/control-statements/control-statements.component';
+import { ReactiveFormComponent } from '../components/forms/reactive-form/reactive-form.component';
+import { TemplateDrivenFormComponent } from '../components/forms/template-driven-form/template-driven-form.component';
 
 export const routes: Routes = [
   {
@@ -35,5 +38,17 @@ export const routes: Routes = [
   {
     path:'control-flow',
     component: ControlStatementsComponent
+  },
+  {
+    path:'linked-signal',
+    component:LinkedSignalComponent
+  },
+  {
+    path: 'reactive-form',
+    component: ReactiveFormComponent
+  },
+  {
+    path: 'template-driven-form',
+    component: TemplateDrivenFormComponent
   }
 ];
