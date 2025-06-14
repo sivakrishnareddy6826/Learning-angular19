@@ -1,0 +1,54 @@
+<div class="container">
+  <form class="row g-3 needs-validation" (ngSubmit)="onEmpSaveForm()" [formGroup]="empForm">
+
+    <!-- Employee Name -->
+    <div class="col-md-6">
+      <label class="form-label">Employee Name</label>
+      <input type="text" class="form-control" formControlName="name">
+      <div class="text-danger" *ngIf="empForm.controls['name'].touched && empForm.controls['name'].dirty">
+        <span *ngIf="empForm.controls['name'].errors?.['required']">This is required</span>
+        <span *ngIf="empForm.controls['name'].errors?.['minlength']">Min 5 characters needed</span>
+      </div>
+    </div>
+
+    <!-- Position -->
+    <div class="col-md-6">
+      <label class="form-label">Position</label>
+      <input type="text" class="form-control" formControlName="position">
+      <div class="text-danger" *ngIf="empForm.controls['position'].touched && empForm.controls['position'].errors?.['required']">
+        This is required
+      </div>
+    </div>
+
+    <!-- Salary -->
+    <div class="col-md-6">
+      <label class="form-label">Salary</label>
+      <input type="number" class="form-control" formControlName="salary">
+      <div class="text-danger" *ngIf="empForm.controls['salary'].touched && empForm.controls['salary'].dirty">
+        <span *ngIf="empForm.controls['salary'].errors?.['required']">This is required</span>
+        <span *ngIf="empForm.controls['salary'].errors?.['pattern']">Only numeric values allowed</span>
+      </div>
+    </div>
+
+    <!-- Department -->
+    <div class="col-md-6">
+      <label class="form-label">Department</label>
+      <input type="text" class="form-control" formControlName="department">
+      <div class="text-danger" *ngIf="empForm.controls['department'].touched && empForm.controls['department'].errors?.['required']">
+        This is required
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="col-12">
+      @if (!isEditMode) {
+        <button class="btn btn-success" type="submit" [disabled]="!empForm.valid">Add Employee</button>
+      }
+      @else {
+        <button class="btn btn-success" type="submit" [disabled]="!empForm.valid">Update</button>
+      }
+
+    </div>
+
+  </form>
+</div>

@@ -1,47 +1,56 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="javascript:void(0)">Logo</a>
+    <a class="navbar-brand" routerLink="about">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCTCRH9I8WjtEpJJRITzRs8UnWljRhaZcV4g&s" alt="Logo" width="40" height="40">
+    </a>
+
+    <!-- Toggler for small screens -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <ul class="navbar-nav me-auto">
 
-      <!-- Directives Dropdown -->
-      <li class="nav-item dropdown" style="margin-top:-12px;">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-          Directives
-        </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" routerLink="ng-class">Ng-Class</a></li>
-          <li><a class="dropdown-item" routerLink="ng-for">Ng-For</a></li>
-          <li><a class="dropdown-item" routerLink="control-flow">Control-Flow</a></li>
-          <li><a class="dropdown-item" routerLink="data-binding">Data-Binding</a></li>
-          <li><a class="dropdown-item" routerLink="ng-class">ngClass</a></li>
-        </ul>
-      </li>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+        <!-- Data Binding -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="data-binding">Data-Binding</a>
+        </li>
 
-      <!-- Signals Dropdown -->
-      <li class="nav-item dropdown" style="margin-top:-12px;">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-          Signals
-        </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" routerLink="linked-signal">Linked-Signal</a></li>
-        </ul>
-      </li>
+        <!-- Directives Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            Directives
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="ng-class">Ng-Class</a></li>
+            <li><a class="dropdown-item" routerLink="ng-for">Ng-For</a></li>
+            <li><a class="dropdown-item" routerLink="control-flow">Control-Flow</a></li>
+          </ul>
+        </li>
 
-      <!-- Forms Dropdown -->
-      <li class="nav-item dropdown" style="margin-top:-12px;">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-          Forms
-        </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" routerLink="template-driven-form">Template Driven Form</a></li>
-          <li><a class="dropdown-item" routerLink="reactive-form">Reactive Form</a></li>
-        </ul>
-      </li>
+        <!-- Signals Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            Signals
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="linked-signal">Linked-Signal</a></li>
+          </ul>
+        </li>
+
+        <!-- Forms Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            Forms
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="template-driven-form">Template Driven Form</a></li>
+            <li><a class="dropdown-item" routerLink="reactive-form">Reactive Form</a></li>
+          </ul>
+        </li>
+
         <!-- Types of Users Dropdown -->
-        <li class="nav-item dropdown" style="margin-top:-12px;">
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
             Types of Users
           </a>
@@ -50,13 +59,25 @@
             <li><a class="dropdown-item" routerLink="user">Normal-User</a></li>
           </ul>
         </li>
+          <!-- Types of Users API Calls -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            API call
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="get-api">GET-API</a></li>
+            <li><a class="dropdown-item" routerLink="post-api">POST-API</a></li>
+          </ul>
+        </li>
+      </ul>
 
-    </ul>
-
-      <form class="d-flex">
-        <input class="form-control me-2" type="text" placeholder="Search">
-        <button class="btn btn-primary" type="button">Search</button>
+      <!-- Search button and input -->
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search">
+        <button class="btn btn-outline-light" type="submit">Search</button>
       </form>
     </div>
+  </div>
 </nav>
+
 <router-outlet></router-outlet>
