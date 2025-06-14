@@ -1,1 +1,88 @@
-<p>reactive-form works!</p>
+<div class="container">
+  <form class="row g-3 needs-validation" (ngSubmit)="onUserSaveForm()" [formGroup]="userForm">
+
+    <!-- First Name -->
+    <div class="col-md-4">
+      <label class="form-label">First name</label>
+      <input type="text" class="form-control" formControlName="fName">
+      <div class="text-danger" *ngIf="userForm.controls['fName'].touched && userForm.controls['fName'].dirty">
+        <span *ngIf="userForm.controls['fName'].errors?.['required']">This is required</span>
+        <span *ngIf="userForm.controls['fName'].errors?.['minlength']">Min 5 character needed</span>
+      </div>
+    </div>
+
+    <!-- Last Name -->
+    <div class="col-md-4">
+      <label class="form-label">Last name</label>
+      <input type="text" class="form-control" formControlName="lName">
+      <div class="text-danger" *ngIf="userForm.controls['lName'].touched && userForm.controls['lName'].dirty">
+        <span *ngIf="userForm.controls['lName'].errors?.['required']">This is required</span>
+        <span *ngIf="userForm.controls['lName'].errors?.['minlength']">Min 5 char needed</span>
+      </div>
+    </div>
+
+    <!-- Username -->
+    <div class="col-md-4">
+      <label class="form-label">Username (Email)</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text" id="inputGroupPrepend">&#64;</span>
+        <input type="text" class="form-control" formControlName="userName" aria-describedby="inputGroupPrepend">
+        <div class="text-danger" *ngIf="userForm.controls['userName'].touched && userForm.controls['userName'].dirty">
+          <span *ngIf="userForm.controls['userName'].errors?.['required']">This is required</span>
+          <span *ngIf="userForm.controls['userName'].errors?.['email']">Email should be in format abc&#64;email.com</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- City -->
+    <div class="col-md-6">
+      <label class="form-label">City</label>
+      <input type="text" class="form-control" formControlName="city">
+      <div class="text-danger" *ngIf="userForm.controls['city'].touched && userForm.controls['city'].errors?.['required']">
+        City is required
+      </div>
+    </div>
+
+    <!-- State -->
+    <div class="col-md-3">
+      <label class="form-label">State</label>
+      <select class="form-select" formControlName="state">
+        <option selected disabled value="">Choose State</option>
+        <option>Andhra Pradesh</option>
+        <option>Bengaluru</option>
+        <option>Chennai</option>
+        <option>Remote</option>
+      </select>
+      <div class="text-danger" *ngIf="userForm.controls['state'].touched && userForm.controls['state'].errors?.['required']">
+        State is required
+      </div>
+    </div>
+
+    <!-- Zip -->
+    <div class="col-md-3">
+      <label class="form-label">Zip</label>
+      <input type="text" class="form-control" formControlName="zip">
+      <div class="text-danger" *ngIf="userForm.controls['zip'].touched && userForm.controls['zip'].errors?.['required']">
+        Zip is required
+      </div>
+    </div>
+
+    <!-- Agree Checkbox -->
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" formControlName="isAgree" type="checkbox" id="invalidCheck">
+        <label class="form-check-label" for="invalidCheck">
+          Agree to terms and conditions
+        </label>
+        <div class="text-danger" *ngIf="userForm.controls['isAgree'].touched && userForm.controls['isAgree'].errors?.['required']">
+          You must agree before submitting.
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="col-12">
+      <button class="btn btn-primary" [disabled]="!userForm.valid" type="submit">Submit form</button>
+    </div>
+  </form>
+</div>
