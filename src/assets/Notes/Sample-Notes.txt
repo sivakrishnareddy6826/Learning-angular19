@@ -1,0 +1,7 @@
+speaker_notes
+1: When ever you want use template driven form name property is must to avoid console error.
+2: To use forms you need to import Fosrms Module, or Reactive Forms Module,[Remember imports must for using anything inside the component]
+that may be ngIf or ngFor also.
+3: When ever you want to work with API integration firstly you need to do is goto app.config.ts you need to add element in to array in providers array you need to add providerHttpClient
+Previously we used to import HttpModule but that is depricated now.
+4. Anything that is returning Observable we can subscribe to that

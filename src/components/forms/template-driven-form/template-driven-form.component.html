@@ -1,1 +1,60 @@
-<p>template-driven-form works!</p>
+<div class="container">
+  <form #form="ngForm" class="row g-3 needs-validation" novalidate>
+    <div class="col-md-4">
+      <label class="form-label">First name <span class="text-danger">*</span></label>
+      <input type="text" #fName = "ngModel" name="firstName" [(ngModel)] = "userObj.firstName" class="form-control" required>
+      <div class="text-danger">
+        @if(fName.errors?.['required'] && fName.touched && fName.dirty){
+          <span>First name is required</span>
+        }
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label  class="form-label">Last name <span class="text-danger">*</span></label>
+      <input type="text" name="lastName" minlength="4" #lName="ngModel" [(ngModel)] = "userObj.lastName" class="form-control" required>
+      <div class="text-danger">
+        <span *ngIf="lName.errors?.['required'] && lName.touched && lName.dirty">Last name is required</span>
+        <span *ngIf="lName.errors?.['minlength'] && lName.touched && lName.dirty">Min 4 chanracters</span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Username</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text" id="inputGroupPrepend">&#64;</span>
+        <input type="text" name="userName" [(ngModel)] = "userObj.userName" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">City</label>
+      <input type="text" name="city" [(ngModel)] = "userObj.city" class="form-control" required>
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">State</label>
+      <select class="form-select" name="state" [(ngModel)] = "userObj.state" required>
+        <option selected disabled value="">Choose state</option>
+        <option>Andhra Pradesh</option>
+        <option>Bengaluru</option>
+        <option>Chennai</option>
+        <option>Remote</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">Zip</label>
+      <input type="text" name="zipCode" [(ngModel)] = "userObj.zipCode" class="form-control" required>
+    </div>
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" name="isTermsAgree" [(ngModel)] = "userObj.isTermsAgree" type="checkbox" value="" id="invalidCheck" required>
+        <label class="form-check-label" for="invalidCheck">
+          Agree to terms and conditions
+        </label>
+        <div class="invalid-feedback">
+          You must agree before submitting.
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary" [disabled]="form.invalid" type="button" (click)="onSave()">Submit form</button>
+    </div>
+  </form>
+</div>
