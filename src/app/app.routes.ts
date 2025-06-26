@@ -11,6 +11,7 @@ import { TemplateDrivenFormComponent } from '../components/forms/template-driven
 import { GetApiComponent } from '../components/API/get-api/get-api.component';
 import { PostApiComponent } from '../components/API/post-api/post-api.component';
 import { AboutComponent } from '../components/About/about/about.component';
+import { ResourceApiComponent } from '../components/API/resource-api/resource-api.component';
 
 export const routes: Routes = [
   {
@@ -70,4 +71,8 @@ export const routes: Routes = [
     path: 'post-api/:id',
     component: PostApiComponent
   },
+  {
+    path:'resource-api',
+    component: ResourceApiComponent
+  }
 ];
