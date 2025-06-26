@@ -2,6 +2,7 @@ import { NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router, RouterModule, RouterLink } from '@angular/router';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-get-api',
@@ -21,10 +22,10 @@ employeeList: any[] = [];
 showUsers: boolean = false;
 showEmployees: boolean = false;
 
-constructor(private http: HttpClient, private route: Router) {}
+constructor(private http: HttpClient, private empService: EmployeeService, private route: Router) {}
 
 getUsers() {
-  this.http.get("https://jsonplaceholder.typicode.com/users").subscribe((result: any) => {
+  this.empService.getUsersFromOpenAPI().subscribe((result: any) => {
     this.userList = result;
     this.showUsers = true;
     this.showEmployees = false;
@@ -32,7 +33,7 @@ getUsers() {
 }
 
 getEmployess() {
-  this.http.get("https://localhost:7177/api/employees").subscribe((result: any) => {
+  this.empService.LoadEmpoyees().subscribe((result: any) => {
     this.employeeList = result;
     this.showEmployees = true;
     this.showUsers = false;
