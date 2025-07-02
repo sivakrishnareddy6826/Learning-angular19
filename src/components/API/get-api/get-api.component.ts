@@ -1,6 +1,6 @@
 import { NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule, RouterLink } from '@angular/router';
 import { EmployeeService } from '../../services/employee.service';
 
@@ -10,7 +10,7 @@ import { EmployeeService } from '../../services/employee.service';
   templateUrl: './get-api.component.html',
   styleUrl: './get-api.component.css'
 })
-export class GetApiComponent {
+export class GetApiComponent implements OnInit {
 
   postEmpRoute() {
 
@@ -22,8 +22,14 @@ employeeList: any[] = [];
 showUsers: boolean = false;
 showEmployees: boolean = false;
 
+// constructor used for initialize the variables
 constructor(private http: HttpClient, private empService: EmployeeService, private route: Router) {}
 
+
+  ngOnInit(): void {
+  // calling getUsers because once you load the component it will implicitly called getUsers()
+   this.getUsers();
+  }
 getUsers() {
   this.empService.getUsersFromOpenAPI().subscribe((result: any) => {
     this.userList = result;
