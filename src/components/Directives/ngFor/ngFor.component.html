@@ -1,5 +1,17 @@
 <div class="row">
   <div class="col-3">
+    name with Subject => {{name}}
+    <br>
+    After Using Capital Pipe => {{name | uppercase}}
+  </div>
+     <div class="col-3">
+      randomObj => {{randomObj}}
+      <br>
+      randomObj after Json Pipe => {{randomObj | json}}
+    </div>
+</div>
+<div class="row">
+  <div class="col-3">
     <ul>
       <li *ngFor="let city of cityList">
         {{city}}
@@ -21,13 +33,17 @@
           <td>Id</td>
           <td>Name</td>
           <td>City</td>
+          <td>Attendance</td>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let employee of employeeArray">
           <td>{{employee.empId}}</td>
-          <td>{{employee.empName}}</td>
-          <td>{{employee.city}}</td>
+          <td>{{employee.empName | naPipe}}</td>
+          <td>{{employee.city | uppercase}}</td>
+          <td>
+            <app-progress-bar [progressValue]="employee.attendance"></app-progress-bar>
+          </td>
         </tr>
       </tbody>
     </table>

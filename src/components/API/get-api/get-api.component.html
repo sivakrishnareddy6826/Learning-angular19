@@ -12,8 +12,15 @@
   </div>
 </div>
 
+<!-- <div class="row">
+  <div class="col-12 text-center">
+    <app-tabs [tabList]="['userList','empList']"(OnTabClicked)="onTabChange($event)"></app-tabs>
+  </div>
+</div>
 
-   <div class="container" *ngIf="showUsers">
+-- currentTab => {{currentTab}} -->
+
+<div class="container" *ngIf="showUsers">
   <h4 class="mb-3 text-primary">User List</h4>
   <div class="table-responsive">
     <table class="table table-striped table-hover table-bordered align-middle text-center">

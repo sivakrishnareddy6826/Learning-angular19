@@ -3,10 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule, RouterLink } from '@angular/router';
 import { EmployeeService } from '../../services/employee.service';
+import { TabsComponent } from '../../reusable/tabs/tabs.component';
 
 @Component({
   selector: 'app-get-api',
-  imports: [NgIf, RouterModule ],
+  imports: [NgIf, RouterModule],
   templateUrl: './get-api.component.html',
   styleUrl: './get-api.component.css'
 })
@@ -21,7 +22,7 @@ employeeList: any[] = [];
 
 showUsers: boolean = false;
 showEmployees: boolean = false;
-
+currentTab: string = '';
 // constructor used for initialize the variables
 constructor(private http: HttpClient, private empService: EmployeeService, private route: Router) {}
 
@@ -48,7 +49,10 @@ getEmployess() {
 OnEdit(data: any) {
    this.route.navigate(['post-api', data.id]);
 }
-
+onTabChange(tabName:string){
+  //debugger;
+  this.currentTab = tabName;
+}
 OnDelete(data: any) {
   const confirmDelete = confirm(`Are you sure you want to delete employee: ${data.name}?`);
 
