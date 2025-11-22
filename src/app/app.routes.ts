@@ -13,71 +13,81 @@ import { PostApiComponent } from '../components/API/post-api/post-api.component'
 import { AboutComponent } from '../components/About/about/about.component';
 import { ResourceApiComponent } from '../components/API/resource-api/resource-api.component';
 import { LifecycleComponent } from '../components/lifecycle/lifecycle.component';
+import { RxJsBasicComponent } from '../components/RxJs/rx-js-basic/rx-js-basic.component';
+import { RxJsOperatorsComponent } from '../components/RxJs/rx-js-operators/rx-js-operators.component';
 
 export const routes: Routes = [
   {
-    path:'',
+    path: '',
     redirectTo: 'data-binding',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
-    path:'admin',
-    component: AdminComponent
+    path: 'admin',
+    component: AdminComponent,
   },
   {
-    path:'user',
-    component: UserComponent
+    path: 'user',
+    component: UserComponent,
   },
   {
     path: 'data-binding',
-    component: DataBindingComponent
+    component: DataBindingComponent,
   },
   {
     path: 'ng-class',
-    component: NgClassComponent
+    component: NgClassComponent,
   },
   {
-    path:'ng-for',
-    component: NgForComponent
+    path: 'ng-for',
+    component: NgForComponent,
   },
   {
-    path:'control-flow',
-    component: ControlStatementsComponent
+    path: 'control-flow',
+    component: ControlStatementsComponent,
   },
   {
-    path:'linked-signal',
-    component:LinkedSignalComponent
+    path: 'linked-signal',
+    component: LinkedSignalComponent,
   },
   {
     path: 'reactive-form',
-    component: ReactiveFormComponent
+    component: ReactiveFormComponent,
   },
   {
     path: 'template-driven-form',
-    component: TemplateDrivenFormComponent
+    component: TemplateDrivenFormComponent,
   },
   {
-    path:'get-api',
-    component: GetApiComponent
+    path: 'get-api',
+    component: GetApiComponent,
   },
   {
-    path : 'post-api',
-    component: PostApiComponent
+    path: 'post-api',
+    component: PostApiComponent,
   },
   {
     path: 'about',
-    component: AboutComponent
+    component: AboutComponent,
   },
   {
     path: 'post-api/:id',
-    component: PostApiComponent
+    component: PostApiComponent,
   },
   {
-    path:'resource-api',
-    component: ResourceApiComponent
+    path: 'resource-api',
+    component: ResourceApiComponent,
   },
-    {
-    path:'life-cycle',
-    component: LifecycleComponent
-  }
+  {
+    path: 'life-cycle',
+    component: LifecycleComponent,
+  },
+  {
+    path: 'rx-js-basic',
+    component: RxJsBasicComponent,
+  },
+  {
+    path: 'rx-js-operator',
+    component: RxJsOperatorsComponent,
+  },
 ];

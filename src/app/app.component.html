@@ -1,11 +1,21 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="about">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCTCRH9I8WjtEpJJRITzRs8UnWljRhaZcV4g&s" alt="Logo" width="40" height="40">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCTCRH9I8WjtEpJJRITzRs8UnWljRhaZcV4g&s"
+        alt="Logo"
+        width="40"
+        height="40"
+      />
     </a>
 
     <!-- Toggler for small screens -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#mynavbar"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -18,40 +28,76 @@
 
         <!-- Directives Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+          >
             Directives
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" routerLink="ng-class">Ng-Class</a></li>
             <li><a class="dropdown-item" routerLink="ng-for">Ng-For</a></li>
-            <li><a class="dropdown-item" routerLink="control-flow">Control-Flow</a></li>
+            <li>
+              <a class="dropdown-item" routerLink="control-flow"
+                >Control-Flow</a
+              >
+            </li>
           </ul>
         </li>
 
         <!-- Signals Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+          >
             Signals
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="linked-signal">Linked-Signal</a></li>
+            <li>
+              <a class="dropdown-item" routerLink="linked-signal"
+                >Linked-Signal</a
+              >
+            </li>
           </ul>
         </li>
 
         <!-- Forms Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+          >
             Forms
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="template-driven-form">Template Driven Form</a></li>
-            <li><a class="dropdown-item" routerLink="reactive-form">Reactive Form</a></li>
+            <li>
+              <a class="dropdown-item" routerLink="template-driven-form"
+                >Template Driven Form</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="reactive-form"
+                >Reactive Form</a
+              >
+            </li>
           </ul>
         </li>
 
         <!-- Types of Users Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+          >
             Types of Users
           </a>
           <ul class="dropdown-menu">
@@ -59,25 +105,57 @@
             <li><a class="dropdown-item" routerLink="user">Normal-User</a></li>
           </ul>
         </li>
-          <!-- Types of Users API Calls -->
+        <!-- Types of Users API Calls -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+          >
             API call
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="get-api">GET-API</a></li>
+            <li>
+              <a class="dropdown-item" routerLink="get-api">GET-USER-API</a>
+            </li>
             <li><a class="dropdown-item" routerLink="post-api">POST-API</a></li>
-            <li><a class="dropdown-item" routerLink="resource-api">RESOURCE-API</a></li>
+            <li>
+              <a class="dropdown-item" routerLink="resource-api"
+                >RESOURCE-API</a
+              >
+            </li>
           </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="life-cycle">Life Cycle</a>
         </li>
+        <!-- Types of RxJs -->
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+          >
+            RxJs
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" routerLink="rx-js-basic">RxJs Basic</a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="rx-js-operator"
+                >RxJS Operators</a
+              >
+            </li>
+          </ul>
+        </li>
       </ul>
 
       <!-- Search button and input -->
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search">
+        <input class="form-control me-2" type="search" placeholder="Search" />
         <button class="btn btn-outline-light" type="submit">Search</button>
       </form>
     </div>

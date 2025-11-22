@@ -1,14 +1,16 @@
-<h2>GET-api!</h2>
+<h2>Get - API!</h2>
 
 <div class="row mb-4">
   <!-- <div class="col-3">
     <button (click)="getUsers()" class="btn btn-success">Load Users</button>
   </div> -->
   <div class="col-3">
-    <button (click)="getEmployess()" class="btn btn-primary">Emp List</button>
+    <button (click)="getEmployess()" class="btn btn-primary">Employee List</button>
   </div>
-    <div class="col-3">
-    <button [routerLink]="['/post-api']" class="btn btn-primary">Create Employee</button>
+  <div class="col-3">
+    <button [routerLink]="['/post-api']" class="btn btn-primary">
+      Create Employee
+    </button>
   </div>
 </div>
 
@@ -23,7 +25,9 @@
 <div class="container" *ngIf="showUsers">
   <h4 class="mb-3 text-primary">User List</h4>
   <div class="table-responsive">
-    <table class="table table-striped table-hover table-bordered align-middle text-center">
+    <table
+      class="table table-striped table-hover table-bordered align-middle text-center"
+    >
       <thead class="table-dark">
         <tr>
           <th>Sl. No</th>
@@ -36,18 +40,18 @@
       </thead>
       <tbody>
         @for (item of userList; track $index) {
-          <tr>
-            <td>{{ $index + 1 }}</td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.username }}</td>
-            <td>{{ item.email }}</td>
-            <td>{{ item.phone }}</td>
-            <td>
-              <a [href]="'http://' + item.website" target="_blank">
-                {{ item.website }}
-              </a>
-            </td>
-          </tr>
+        <tr>
+          <td>{{ $index + 1 }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.username }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.phone }}</td>
+          <td>
+            <a [href]="'http://' + item.website" target="_blank">
+              {{ item.website }}
+            </a>
+          </td>
+        </tr>
         }
       </tbody>
     </table>
@@ -58,11 +62,14 @@
 <div class="container" *ngIf="showEmployees">
   <h4 class="mb-3 text-primary">Employee List</h4>
   <div class="table-responsive">
-    <table class="table table-striped table-hover table-bordered align-middle text-center">
+    <table
+      class="table table-striped table-hover table-bordered align-middle text-center"
+    >
       <thead class="table-dark">
         <tr>
           <th>Sl. No</th>
           <th>Name</th>
+          <th>Email</th>
           <th>position</th>
           <th>Salary</th>
           <th>Department</th>
@@ -71,21 +78,22 @@
       </thead>
       <tbody>
         @for (emp of employeeList; track $index) {
-          <tr>
-            <td>{{ $index + 1 }}</td>
-            <td>{{ emp.name }}</td>
-            <td>{{ emp.position }}</td>
-            <td>{{ emp.salary }}</td>
-            <td>{{ emp.department }}</td>
-            <td>
-              <button class="btn btn-warning" (click)="OnEdit(emp)">Edit</button>
-              <button class="btn btn-danger" (click)="OnDelete(emp)">Delete</button>
-            </td>
-          </tr>
+        <tr>
+          <td>{{ $index + 1 }}</td>
+          <td>{{ emp.name }}</td>
+          <td>{{ emp.email }}</td>
+          <td>{{ emp.position }}</td>
+          <td>{{ emp.salary }}</td>
+          <td>{{ emp.department.name | uppercase }}</td>
+          <td>
+            <button class="btn btn-warning" (click)="OnEdit(emp)">Edit</button>
+            <button class="btn btn-danger" (click)="OnDelete(emp)">
+              Delete
+            </button>
+          </td>
+        </tr>
         }
       </tbody>
     </table>
   </div>
 </div>
-
-
