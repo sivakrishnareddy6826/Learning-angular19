@@ -1,21 +1,55 @@
 <div class="container">
-  <form class="row g-3 needs-validation" (ngSubmit)="onEmpSaveForm()" [formGroup]="empForm">
-
+  <form
+    class="row g-3 needs-validation"
+    (ngSubmit)="onEmpSaveForm()"
+    [formGroup]="empForm"
+  >
     <!-- Employee Name -->
     <div class="col-md-6">
       <label class="form-label">Employee Name</label>
-      <input type="text" class="form-control" formControlName="name">
-      <div class="text-danger" *ngIf="empForm.controls['name'].touched && empForm.controls['name'].dirty">
-        <span *ngIf="empForm.controls['name'].errors?.['required']">This is required</span>
-        <span *ngIf="empForm.controls['name'].errors?.['minlength']">Min 5 characters needed</span>
+      <input type="text" class="form-control" formControlName="name" />
+      <div
+        class="text-danger"
+        *ngIf="
+          empForm.controls['name'].touched && empForm.controls['name'].invalid
+        "
+      >
+        <span *ngIf="empForm.controls['name'].errors?.['required']">
+          This is required
+        </span>
+
+        <span *ngIf="empForm.controls['name'].errors?.['minlength']">
+          Min 5 characters needed
+        </span>
+      </div>
+    </div>
+    <!-- Employee email -->
+    <div class="col-md-6">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" formControlName="email" />
+      <div
+        class="text-danger"
+        *ngIf="
+          empForm.controls['email'].touched && empForm.controls['email'].invalid
+        "
+      >
+        <span *ngIf="empForm.controls['email'].errors?.['required']"
+          >Email is required</span
+        >
+        <span *ngIf="empForm.controls['email'].errors?.['email']"
+          >Invalid email format</span
+        >
       </div>
     </div>
 
     <!-- Position -->
     <div class="col-md-6">
       <label class="form-label">Position</label>
-      <input type="text" class="form-control" formControlName="position">
-      <div class="text-danger" *ngIf="empForm.controls['position'].touched && empForm.controls['position'].errors?.['required']">
+      <input type="text" class="form-control" formControlName="position" />
+      <div
+        class="text-danger"
+        *ngIf="empForm.controls['position'].touched && empForm.controls['position'].errors?.['required']"
+      >
         This is required
       </div>
     </div>
@@ -23,32 +57,76 @@
     <!-- Salary -->
     <div class="col-md-6">
       <label class="form-label">Salary</label>
-      <input type="number" class="form-control" formControlName="salary">
-      <div class="text-danger" *ngIf="empForm.controls['salary'].touched && empForm.controls['salary'].dirty">
-        <span *ngIf="empForm.controls['salary'].errors?.['required']">This is required</span>
-        <span *ngIf="empForm.controls['salary'].errors?.['pattern']">Only numeric values allowed</span>
+      <input type="number" class="form-control" formControlName="salary" />
+      <div
+        class="text-danger"
+        *ngIf="
+          empForm.controls['salary'].touched &&
+          empForm.controls['salary'].invalid
+        "
+      >
+        <span *ngIf="empForm.controls['salary'].errors?.['required']">
+          This is required
+        </span>
+
+        <span *ngIf="empForm.controls['salary'].errors?.['pattern']">
+          Only numeric values allowed
+        </span>
       </div>
     </div>
 
     <!-- Department -->
     <div class="col-md-6">
       <label class="form-label">Department</label>
-      <input type="text" class="form-control" formControlName="department">
-      <div class="text-danger" *ngIf="empForm.controls['department'].touched && empForm.controls['department'].errors?.['required']">
-        This is required
+
+      <select class="form-select" formControlName="departmentId">
+        <option [ngValue]="null" disabled>-- Select Department --</option>
+        <option *ngFor="let dep of departments" [value]="dep.id">
+          {{ dep.name }}
+        </option>
+      </select>
+
+      <div
+        class="text-danger mt-1"
+        *ngIf="empForm.controls['departmentId'].touched
+           && empForm.controls['departmentId'].errors?.['required']"
+      >
+        Department is required
       </div>
     </div>
+
+    <!-- Role -->
+    <div class="col-md-6">
+      <label class="form-label">Role</label>
+      <select class="form-control" formControlName="roleId">
+        <option [ngValue]="null" disabled>-- Select Role --</option>
+        <option *ngFor="let role of roles" [value]="role.id">
+          {{ role.name }}
+        </option>
+      </select>
+      <div
+        class="text-danger"
+        *ngIf="empForm.controls['roleId'].touched && empForm.controls['roleId'].errors?.['required']"
+      >
+        Role is required
+      </div>
+    </div>
+
+    <!-- below code is helpful toi show the json
+      what you are sending to the backend -->
+    <pre>{{ empForm.valid }} | {{ empForm.value | json }}</pre>
 
     <!-- Submit -->
     <div class="col-12">
       @if (!isEditMode) {
-        <button class="btn btn-success" type="submit" [disabled]="!empForm.valid">Add Employee</button>
+      <button class="btn btn-success" type="submit" [disabled]="!empForm.valid">
+        Add Employee
+      </button>
+      } @else {
+      <button class="btn btn-success" type="submit" [disabled]="!empForm.valid">
+        Update
+      </button>
       }
-      @else {
-        <button class="btn btn-success" type="submit" [disabled]="!empForm.valid">Update</button>
-      }
-
     </div>
-
   </form>
 </div>
