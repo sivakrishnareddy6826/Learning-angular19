@@ -1,1 +1,36 @@
 <p>rx-js-operators you can see them in console!</p>
+<button (click)="getDepartments()">Get Department List</button>
+<div class="container">
+  <h4 class="mb-3 text-primary">Employee List</h4>
+  <div class="table-responsive">
+    <table
+      class="table table-striped table-hover table-bordered align-middle text-center"
+    >
+      <thead class="table-dark">
+        <tr>
+          <th>Sl. No</th>
+          <th>Department Id</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (emp of this.deptList; track $index) {
+        <tr>
+          <td>{{ $index + 1 }}</td>
+          <td>{{ emp.id }}</td>
+          <td>{{ emp.name }}</td>
+          <td>{{ emp.description }}</td>
+          <!-- <td>
+            <button class="btn btn-warning" (click)="OnEdit(empData.id)">
+              Edit
+            </button>
+          </td> -->
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+<pre>{{ deptList | json }}</pre>

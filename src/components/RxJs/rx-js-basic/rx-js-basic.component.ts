@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { from, interval, Observable, of, timer } from 'rxjs';
+import { from, interval, Observable, of, take, timer } from 'rxjs';
 
 @Component({
   selector: 'app-rx-js-basic',
@@ -49,9 +49,15 @@ export class RxJsBasicComponent {
     });
 
     // subscribing to interval so it will execute N number of times
-    // this.myInterval$.subscribe((res: number) => {
-    //   console.log('interval time' + res);
-    // });
+    // By using take/take until you can stop the interval
+    this.myInterval$.pipe(take(10)).subscribe((res: number) => {
+      console.log('interval time' + res);
+      if (res == 9) {
+        console.log(
+          'I have used take(10) so it will stop the interval once it reaches 0 to 9'
+        );
+      }
+    });
 
     // subscribing to timer(it will execute only one time)
     this.myTimer$.subscribe((res) => {

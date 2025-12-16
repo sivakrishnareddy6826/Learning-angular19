@@ -1,11 +1,14 @@
 <h2>Get - API!</h2>
-
+<input type="text" #txtInput placeholder="Enter something" />
+<button (click)="readInputValue()">Read value</button>
 <div class="row mb-4">
   <!-- <div class="col-3">
     <button (click)="getUsers()" class="btn btn-success">Load Users</button>
   </div> -->
   <div class="col-3">
-    <button (click)="getEmployess()" class="btn btn-primary">Employee List</button>
+    <button (click)="getEmployess()" class="btn btn-primary">
+      Employee List
+    </button>
   </div>
   <div class="col-3">
     <button [routerLink]="['/post-api']" class="btn btn-primary">
