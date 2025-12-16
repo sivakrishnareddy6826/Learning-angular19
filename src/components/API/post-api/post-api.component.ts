@@ -30,6 +30,7 @@ export class PostApiComponent {
 
   ngOnInit() {
     //forkJoin(from rxJS) for parallel API calls
+    // If any api fails it won't execute. Only error block will be executed
     forkJoin({
       departments: this.http.get<Department[]>(
         'https://localhost:7177/api/admin/department'

@@ -1,6 +1,6 @@
 import { NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterModule, RouterLink } from '@angular/router';
 import { EmployeeService } from '../../services/employee.service';
 import { TabsComponent } from '../../reusable/tabs/tabs.component';
@@ -17,6 +17,10 @@ import { UpperCasePipe } from '@angular/common';
 export class GetApiComponent implements OnInit {
   postEmpRoute() {}
 
+  // @ViewChild to get the value of any element(It will work similar document.GetelementById in JavaScript)
+  @ViewChild('txtInput') txtVal: ElementRef | undefined; // to get access of one element Declare and Initialize of ViewChild
+  //@ViewChild(GetApiComponent) componentVal: GetApiComponent | undefined; // this is to get entire component access
+
   userList: any[] = [];
   employeeList: Employee[] = [];
 
@@ -29,7 +33,14 @@ export class GetApiComponent implements OnInit {
     private empService: EmployeeService,
     private route: Router
   ) {}
-
+  // @view child example calling
+  readInputValue() {
+    debugger;
+    const val = this.txtVal?.nativeElement.value;
+    if (this.txtVal) {
+      this.txtVal.nativeElement.style.color = 'Blue';
+    }
+  }
   ngOnInit(): void {
     // calling getUsers because once you load the component it will implicitly called getUsers()
     this.getUsers();

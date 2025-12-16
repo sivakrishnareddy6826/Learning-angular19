@@ -1,0 +1,81 @@
+
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="container mt-4">
+<input type="text" placeholder="search" [formControl]="searchControl">
+  <!-- Name -->
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="name"
+      [class.is-invalid]="userForm.get('name')?.touched && userForm.get('name')?.invalid"
+    />
+    <div class="invalid-feedback">
+      Name is required.
+    </div>
+  </div>
+
+  <!-- Subscribe Checkbox -->
+  <div class="form-check mb-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      formControlName="subscribe"
+      id="subscribeCheck"
+    />
+    <label class="form-check-label" for="subscribeCheck">
+      Subscribe to newsletter
+    </label>
+  </div>
+
+  <!-- Email (Conditional) -->
+  <div class="mb-3" *ngIf="userForm.get('subscribe')?.value">
+    <label class="form-label">Email</label>
+    <input type="email" class="form-control" formControlName="email" />
+  </div>
+
+  <!-- Password -->
+  <div class="mb-3">
+    <label class="form-label">Password</label>
+    <input type="password" class="form-control" formControlName="password" />
+  </div>
+
+  <!-- Confirm Password -->
+  <div class="mb-3">
+    <label class="form-label">Confirm Password</label>
+    <input
+      type="password"
+      class="form-control"
+      formControlName="confirmPassword"
+      [class.is-invalid]="passwordMismatch"
+    />
+    <div class="invalid-feedback" *ngIf="passwordMismatch">
+      Passwords do not match.
+    </div>
+  </div>
+
+  <!-- Age -->
+  <div class="mb-3">
+    <label class="form-label">Age</label>
+    <input type="number" class="form-control" formControlName="age" />
+  </div>
+
+  <!-- Search Results -->
+  <div *ngIf="searchResults.length">
+    <h5 class="mt-4">Search Results</h5>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let result of searchResults">
+        {{ result }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- Submit -->
+  <button
+    class="btn btn-primary mt-3"
+    type="submit"
+    [disabled]="userForm.invalid || passwordMismatch"
+  >
+    Submit
+  </button>
+</form>
