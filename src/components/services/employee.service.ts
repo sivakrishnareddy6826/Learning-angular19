@@ -20,6 +20,19 @@ export class EmployeeService {
     // debugger;
     return this.http.get<Employee[]>(this.apiUrl);
   }
+  // load Employees paginated
+  loadEmployeesPaginated(
+    pageNumber: number,
+    pageSize: number,
+    search: string,
+    sortBy: string,
+    sortDir: string
+  ) {
+    return this.http.get<any>(
+      this.apiUrl +
+        `/paginated-employees?pageNumber=${pageNumber}&pageSize=${pageSize}&search=${search}&sortBy=${sortBy}&sortDir=${sortDir}`
+    );
+  }
 
   getUsersFromOpenAPI() {
     return this.http.get('https://jsonplaceholder.typicode.com/users');

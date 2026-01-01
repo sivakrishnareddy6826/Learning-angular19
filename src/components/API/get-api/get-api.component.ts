@@ -5,16 +5,34 @@ import { Router, RouterModule, RouterLink } from '@angular/router';
 import { EmployeeService } from '../../services/employee.service';
 import { TabsComponent } from '../../reusable/tabs/tabs.component';
 import { Employee } from '../../../models/employee.model';
-import { catchError, of, tap } from 'rxjs';
+import {
+  catchError,
+  debounceTime,
+  distinctUntilChanged,
+  of,
+  Subject,
+  tap,
+} from 'rxjs';
 import { UpperCasePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-get-api',
-  imports: [NgIf, RouterModule, UpperCasePipe],
+  imports: [NgIf, RouterModule, UpperCasePipe, FormsModule],
   templateUrl: './get-api.component.html',
   styleUrl: './get-api.component.css',
 })
 export class GetApiComponent implements OnInit {
+  // For pagination
+  pageNumber = 1;
+  pageSize = 6;
+  totalCount = 0;
+  // searching filter
+  searchText = '';
+  //sorting
+  sortBy = 'name';
+  sortDir = 'asc';
+  private searchSubject = new Subject<string>();
   postEmpRoute() {}
 
   // @ViewChild to get the value of any element(It will work similar document.GetelementById in JavaScript)
@@ -44,6 +62,20 @@ export class GetApiComponent implements OnInit {
   ngOnInit(): void {
     // calling getUsers because once you load the component it will implicitly called getUsers()
     this.getUsers();
+
+    //Without debounce → API call on every keystroke ❌
+    //With debounce → clean & optimized ✅
+    this.searchSubject
+      .pipe(debounceTime(400), distinctUntilChanged())
+      .subscribe(() => {
+        this.pageNumber = 1;
+        this.getPaginatedEmployees();
+      });
+
+    this.getPaginatedEmployees();
+  }
+  onSearchChange() {
+    this.searchSubject.next(this.searchText);
   }
   getUsers() {
     //debugger;
@@ -97,6 +129,30 @@ Use this when:
       });
   }
 
+  getPaginatedEmployees() {
+    this.empService
+      .loadEmployeesPaginated(
+        this.pageNumber,
+        this.pageSize,
+        this.searchText,
+        this.sortBy,
+        this.sortDir
+      )
+      .pipe(
+        tap((res) => {
+          this.employeeList = res.items;
+          this.totalCount = res.totalCount;
+          this.showEmployees = true;
+          this.showUsers = false;
+        }),
+        catchError((err) => {
+          console.error(err);
+          return of(null);
+        })
+      )
+      .subscribe();
+  }
+
   OnEdit(data: any) {
     this.route.navigate(['post-api', data.id]);
   }
@@ -104,6 +160,44 @@ Use this when:
     //debugger;
     this.currentTab = tabName;
   }
+  nextPage() {
+    if (this.pageNumber < this.totalPages) {
+      this.pageNumber++;
+      this.getPaginatedEmployees();
+    }
+  }
+
+  prevPage() {
+    if (this.pageNumber > 1) {
+      this.pageNumber--;
+      this.getPaginatedEmployees();
+    }
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.totalCount / this.pageSize);
+  }
+
+  changeSort(column: string) {
+    debugger;
+    if (this.sortBy === column) {
+      this.sortDir = this.sortDir === 'asc' ? 'desc' : 'asc';
+    } else {
+      this.sortBy = column;
+      this.sortDir = 'asc';
+    }
+
+    this.pageNumber = 1;
+    this.getPaginatedEmployees();
+  }
+
+  //   Without debounce → API call on every keystroke ❌
+  //   With debounce → clean & optimized ✅(Implemented Deounce in NgOninit)
+  // onSearchChange() {
+  //   this.pageNumber = 1;
+  //   this.getPaginatedEmployees();
+  // }
+
   OnDelete(data: any) {
     const confirmDelete = confirm(
       `Are you sure you want to delete employee: ${data.name}?`
