@@ -5,3 +5,17 @@ that may be ngIf or ngFor also.
 3: When ever you want to work with API integration firstly you need to do is goto app.config.ts you need to add element in to array in providers array you need to add providerHttpClient
 Previously we used to import HttpModule but that is depricated now.
 4. Anything that is returning Observable we can subscribe to that
+
+Q: How you implemented pagination in backend .net and how you integrated
+We implemented server-side pagination using Skip & Take in EF Core,
+returned a paged response with total count, and integrated it in Angular using query params and RxJS with next/previous controls.
+
+Q: Search and pagination
+Search is implemented on the server side using query parameters.
+Pagination is applied after filtering, so totalCount reflects searched records only.
+On the UI, we debounce user input to avoid unnecessary API calls.
+
+Q: Sorting + pagination + search
+“We implemented server-side search, sorting, and pagination using query parameters.
+Filtering happens first, then sorting, followed by pagination to ensure totalCount is accurate.
+On the UI, we debounce search input and reset pagination on sort or search changes.”
